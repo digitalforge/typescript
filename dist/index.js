@@ -23,3 +23,24 @@ let person = {
     age: 36,
 };
 person.name = 'Bowser';
+// FUNCTIONS - when you specify a return type, you must return that type :number in this case is the return type and we specify that after the function parameters
+function addTwoNumbers(a, b) {
+    return a + b;
+}
+const subtractTwoNumbers = (a, b) => {
+    return a - b;
+};
+console.log(addTwoNumbers(3, 9));
+subtractTwoNumbers(10, 5);
+function addAllNumbers(items) {
+    const total = items.reduce((a, b) => a + b, 0);
+    console.log(total);
+    //return total
+}
+addAllNumbers([5, 7, 9, 11, 3, 2, 1]);
+// return type inference - if you don't specify a return type, it will infer the return type based on the return value
+function formatGreeting(name, greeting) {
+    return `${greeting}, ${name}`;
+}
+const results = formatGreeting('Mario', 'Hello');
+console.log(results);
