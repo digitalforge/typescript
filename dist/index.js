@@ -33,6 +33,7 @@ const subtractTwoNumbers = (a, b) => {
 console.log(addTwoNumbers(3, 9));
 subtractTwoNumbers(10, 5);
 function addAllNumbers(items) {
+    //void is used when you don't want to return anything
     const total = items.reduce((a, b) => a + b, 0);
     console.log(total);
     //return total
@@ -44,3 +45,52 @@ function formatGreeting(name, greeting) {
 }
 const results = formatGreeting('Mario', 'Hello');
 console.log(results);
+//---------------------------------------------------------------
+// ANY TYPE - use this when you don't know the type of the value
+//---------------------------------------------------------------
+let age;
+age = 30;
+age = false;
+// this is okay because age is of type any
+// the downside is that you lose type checking so typesciprt won't be able to catch errors
+// ANY TYPE - Arrays
+let stuff = [1, true, 'hello'];
+stuff.push({ id: 123 });
+// ANY TYPE - Functions
+function addTogether(value) {
+    return value + value; // this will work for numbers and strings
+}
+console.log(addTogether(5));
+function addItems(a, b) {
+    return a + b; // this will work for numbers and strings
+}
+console.log(addItems('make', 10));
+// one useful case for any is when you are working with a third party library that doesn't have types
+//---------------------------------------------------------------
+// TUPLES - fixed length array where each element has a fixed type
+// the type order must match the order of the values
+//---------------------------------------------------------------
+let character = ['Mario', 25, true];
+// you can't change the order of the types or the length of the tuple
+let hsla;
+hsla = [200, '100%', '50%', 1];
+let xy;
+xy = [70.4, 20.1];
+function useCoords(x, y) {
+    //get coords
+    return [x, y];
+}
+console.log(useCoords(1, 3));
+function latLong() {
+    //this is going to return an array of numbers as we specified in the return type [number,number]
+    return [40.776909, -73.873415];
+}
+const [lat, long] = latLong();
+// ---------------------------------------------------------------
+// NAMED TUPLES - you can use an object to define the tuple
+// ---------------------------------------------------------------
+let user2;
+user2 = ['Peach', 25];
+console.log(user2[0]);
+let user3 = { name: 'Mario', age: 25 };
+console.log(user3.name);
